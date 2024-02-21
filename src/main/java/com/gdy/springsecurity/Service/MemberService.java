@@ -23,7 +23,7 @@ public class MemberService {
         }
 
         String password = bCryptPasswordEncoder.encode(memberDTO.getPassword());
-        String Role = "ROLE_USER";
+        String Role = "ROLE_ADMIN";
         MemberEntity memberEntity = MemberEntity.toJoinmemberEntity(memberDTO,password,Role);
 
         memberRepository.save(memberEntity);

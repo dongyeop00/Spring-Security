@@ -26,4 +26,14 @@ public class MemberController {
         memberService.join(memberDTO);
         return "index";
     }
+
+    @GetMapping("/admin")
+    public String admin(){
+        return "admin";
+    }
+
+    @GetMapping("/login")
+    public String loginForm(){
+        return "login";
+    }
 }
