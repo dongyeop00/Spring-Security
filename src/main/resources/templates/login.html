@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+login page
+<hr>
+<form action="/loginProc" method="post" name="loginForm">
+    <input type="text" id="username" name="username" placeholder="id">
+    <input type="password" id="password" name="password" placeholder="password">
+    <input type="hidden" name="_csrf" value="{{_csrf.token}}">
+    <input type="submit" value="login">
+</form>
+<form action="/" method="get" name="main">
+    <button>main</button>
+</form>
+</body>
+</html>
