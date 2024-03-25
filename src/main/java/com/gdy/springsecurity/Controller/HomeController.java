@@ -17,6 +17,7 @@ public class HomeController {
     @GetMapping("/")
     public String home(Model model){
 
+        /*
         // 사용자의 인증 정보에 접근하여 인증 정보를 반환 후 Authentication 객체에서 사용자의 이름을 반환하는 메서드
         String id = SecurityContextHolder.getContext().getAuthentication().getName();
 
@@ -37,6 +38,8 @@ public class HomeController {
 
         model.addAttribute("id",id);
         model.addAttribute("role",role);
+        
+         */
         return "index";
     }
 

@@ -9,7 +9,6 @@ import lombok.Setter;
 @Entity
 @Setter
 @Getter
-@RequiredArgsConstructor
 public class MemberEntity {
 
 
@@ -24,12 +23,4 @@ public class MemberEntity {
 
     private String role;
 
-
-    public static MemberEntity toJoinmemberEntity(MemberDTO memberDTO, String encode, String Role) {
-        MemberEntity memberEntity = new MemberEntity();
-        memberEntity.setUsername(memberDTO.getUsername());
-        memberEntity.setPassword(encode);
-        memberEntity.setRole(Role);
-        return memberEntity;
-    }
 }

@@ -18,38 +18,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 @RequiredArgsConstructor
 public class MemberController {
 
-    private final MemberService memberService;
-
-    @GetMapping("/join")
-    public String joinForm(){
-        return "join";
-    }
-
-    @PostMapping("/joinProc")
-    public String join(MemberDTO memberDTO){
-        System.out.println(memberDTO);
-        memberService.join(memberDTO);
-        return "index";
-    }
-
     @GetMapping("/admin")
     public String admin(){
         return "admin";
     }
 
-    @GetMapping("/login")
-    public String loginForm(){
-        return "login";
-    }
-
-    @GetMapping("/logout")
-    public String logout(HttpServletRequest request, HttpServletResponse response){
-
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if(authentication != null) {
-            new SecurityContextLogoutHandler().logout(request, response, authentication);
-        }
-
-        return "redirect:/";
-    }
 }

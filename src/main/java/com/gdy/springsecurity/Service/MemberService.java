@@ -6,6 +6,7 @@ import com.gdy.springsecurity.Repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -24,7 +25,7 @@ public class MemberService {
 
         MemberEntity memberEntity = new MemberEntity();
         memberEntity.setUsername(memberDTO.getUsername());
-        memberEntity.setPassword(bCryptPasswordEncoder.encode(memberEntity.getPassword()));
+        memberEntity.setPassword(bCryptPasswordEncoder.encode(memberDTO.getPassword()));
         memberEntity.setRole("ROLE_USER");
 
         /*

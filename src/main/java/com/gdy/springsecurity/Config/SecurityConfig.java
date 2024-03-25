@@ -21,7 +21,7 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
 
         http.authorizeHttpRequests((auth) -> auth
-                .requestMatchers("/", "/login", "/loginProce","/join","/joinProc").permitAll() //루트 경로에서 작업 진행
+                .requestMatchers("/", "/login", "/loginProc","/join","/joinProc").permitAll() //루트 경로에서 작업 진행
                 .requestMatchers("/admin").hasRole("ADMIN")
                 .requestMatchers("/my/**").hasAnyRole("ADMIN","USER")
                 .anyRequest().authenticated()//위에서 처리하지 못한 경로들 처리하는 메소드
@@ -30,28 +30,12 @@ public class SecurityConfig {
         http
                 .formLogin((auth) -> auth.loginPage("/login")
                         .loginProcessingUrl("/loginProc") //form에서 post로 보내는 action값
-                        .permitAll()
-                );
-
-        //http
-        //        .csrf((auth)->auth.disable());
-
-        http
-                .sessionManagement((auth)->auth
-                        .maximumSessions(2)
-                        .maxSessionsPreventsLogin(true)
+                        .permitAll() //해당 경로는 모든 유저가 들어올 수 있다.
                 );
 
         http
-                .sessionManagement((auth)->auth
-                        .sessionFixation().changeSessionId()
-                );
+                .csrf((auth)->auth.disable());
 
-        http
-                .logout((auth)->auth
-                        .logoutUrl("/logout")
-                        .logoutSuccessUrl("/")
-                );
 
         return http.build();
     }
