@@ -22,10 +22,17 @@ public class MemberService {
             return;
         }
 
+        MemberEntity memberEntity = new MemberEntity();
+        memberEntity.setUsername(memberDTO.getUsername());
+        memberEntity.setPassword(bCryptPasswordEncoder.encode(memberEntity.getPassword()));
+        memberEntity.setRole("ROLE_USER");
+
+        /*
         String password = bCryptPasswordEncoder.encode(memberDTO.getPassword());
         String Role = "ROLE_ADMIN";
         MemberEntity memberEntity = MemberEntity.toJoinmemberEntity(memberDTO,password,Role);
 
+         */
         memberRepository.save(memberEntity);
 
     }

@@ -9,16 +9,18 @@ main Page
 <hr>
 <div th:text="'현재 아이디 : ' + ${id}"></div>
 <div th:text="'현재 권한 : ' + ${role}"></div>
-<div class="log_button">
     <form action="/login" method="get" name="login" style="display: inline-block;">
         <button>Login</button>
     </form>
     <form action="/logout" method="get" name="logout" style="display: inline-block;">
         <button>Logout</button>
     </form>
-    <form action="/join" method="get" name="join" style="display: inline-block;" sec:authorize="hasRole('ROLE_USER')">
+    <form action="/join" method="get" name="join" style="display: inline-block;">
         <button>join</button>
     </form>
-</div>
+
+<!--
+sec:authorize="hasRole('ROLE_USER')" : 해당 룰 갖고 있을 때 보여줌
+-->
 </body>
 </html>
